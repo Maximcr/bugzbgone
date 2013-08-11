@@ -307,6 +307,24 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Server\Contracts\Contracts.csproj">
+      <Project>{54684e21-1551-42af-8e4e-545733507486}</Project>
+      <Name>Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Server\Core\Core.csproj">
+      <Project>{7cd1185f-a55a-4018-b49d-c73f6b3bbad7}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Server\Data\Data.csproj">
+      <Project>{3f183de7-68b8-4318-a87a-b0ce4eb1786a}</Project>
+      <Name>Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Server\Models\Models.csproj">
+      <Project>{02e830fe-fd81-46eb-a586-9894b2402935}</Project>
+      <Name>Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

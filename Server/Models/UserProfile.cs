@@ -14,7 +14,8 @@ namespace Models
         public string UserName { get; set; }
 
         public virtual ICollection<Bug> CreatedBugs { get; set; }
-        public virtual ICollection<Bug> Assingedbugs { get; set; } 
+        public virtual ICollection<Bug> Assingedbugs { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; } 
 
 
     }
