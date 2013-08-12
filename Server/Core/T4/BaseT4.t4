@@ -1,0 +1,14 @@
+﻿<#@ template debug="true" hostspecific="true" language="C#" #>
+<#@ assembly name="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5.1\System.Core.dll" #>
+<#@ assembly name="$(TargetDir)\Data.dll" #>
+<#@ assembly name="$(TargetDir)\Models.dll" #>
+<#@ assembly name="$(TargetDir)\Contracts.dll" #>
+<#@ assembly name="$(TargetDir)\EntityFramework.dll" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Data.Entity" #>
+<#@ import namespace="Contracts" #>
+<#@ import namespace="Data" #>
+<#@ import namespace="Models" #>
+<#@ output extension=".cs" #>

@@ -1,0 +1,16 @@
+﻿<#@ include file="..\..\T4\BaseT4.t4"  #>
+using Catel.Data.Repositories;
+using Models;
+namespace Core.Repos.Interfaces
+{
+<#Type typeInfo = typeof(BugzbgoneDb);
+foreach (PropertyInfo propertyInfo in typeInfo.GetProperties().ToList().Where(x => x.PropertyType.ToString().Contains("DbSet")))
+{
+var poconame = propertyInfo.PropertyType.ToString().Replace("System.Data.Entity.DbSet`1[Models.","").Replace("]","");
+#>
+	public partial interface I<#=poconame#>Repository : IEntityRepository<<#=poconame#>, int>
+	{
+		
+	} 
+	<#}#>
+}
