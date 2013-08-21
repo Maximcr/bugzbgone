@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IBugzbgoneUoW.cs" />
     <Compile Include="IDates.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

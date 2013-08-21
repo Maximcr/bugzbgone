@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Catel.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace Contracts
 {
-    public interface IDates
+    public interface IBugzbgoneUoW : IUnitOfWork
     {
-         DateTime? CreateDate { get; set; }
-         DateTime? ModifyDate { get; set; }
     }
 }

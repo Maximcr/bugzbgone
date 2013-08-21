@@ -17,8 +17,9 @@ namespace Models
         public Prioirty Prioirty { get; set; }
         public UserProfile Creator { get; set; }
         public UserProfile AssignedTo { get; set; }
-        public DateTime CreateDate { get; set; }
-        public DateTime ModifyDate { get; set; }
+        public Project Project { get; set; }
+        public DateTime? CreateDate { get; set; }
+        public DateTime? ModifyDate { get; set; }
         public bool Solved { get; set; }
         public bool Closed { get; set; }
         public virtual ICollection<Comment> Comments { get; set; } 

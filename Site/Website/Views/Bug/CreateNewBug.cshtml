@@ -1,0 +1,12 @@
+﻿@using TwitterBootstrapMVC
+@model Website.Models.BugModel
+
+@using (Html.Bootstrap().Begin(new Form()))
+{
+    @Html.Bootstrap().TextBoxFor(x => x.Title)
+    @Html.Bootstrap().TextBoxFor(x => x.Description)
+    @Html.Bootstrap().DropDownListFor(x => x.AssignedToName, (IEnumerable<SelectListItem>)ViewData["allusers"])
+    @Html.Bootstrap().DropDownListFor(x => x.Priority, (IEnumerable<SelectListItem>) ViewData["Priorities"])
+    @Html.Bootstrap().DropDownListFor(x => x.ProjectName, (IEnumerable<SelectListItem>) ViewData["allprojects"])
+    @Html.Bootstrap().SubmitButton().Text("Create New bug")
+}

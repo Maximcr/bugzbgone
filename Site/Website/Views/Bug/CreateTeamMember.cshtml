@@ -1,0 +1,13 @@
+﻿@using TwitterBootstrapMVC
+@model Website.Models.TeamMemberModel
+
+@{
+    ViewBag.Title = "Create new team member";
+}
+
+@using (Html.Bootstrap().Begin(new Form()))
+{
+    @Html.Bootstrap().TextBoxFor(x => x.UserName)
+    @Html.Bootstrap().TextBoxFor(x => x.Password)
+    @Html.Bootstrap().SubmitButton().Text("Create New User")
+}

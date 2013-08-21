@@ -7,6 +7,10 @@ namespace Core.Repos.Interfaces
 	{
 		
 	} 
+		public partial interface IProjectRepository : IEntityRepository<Project, int>
+	{
+		
+	} 
 		public partial interface IUserProfileRepository : IEntityRepository<UserProfile, int>
 	{
 		

@@ -1,0 +1,40 @@
+﻿@using Models
+@using TwitterBootstrapMVC
+@using TwitterBootstrapMVC.Controls
+@model List<Models.Bug>
+
+@{
+    ViewBag.Title = "Bugs";
+}
+@using (TableBuilder<List<Bug>> table = Html.Bootstrap().Begin(new Table().Bordered().Hover().Striped()))
+{
+    using (table.BeginRow(RowColor.Info))
+    {
+        <td>#</td>
+        <td>Title</td>
+        <td>Created By</td>
+        <td>Assinged To</td>
+        <td>Project</td>
+    }
+
+    foreach (Bug item in Model)
+    {
+        var rowtype = RowColor.Info; 
+        if (item.Closed == true)
+        {
+            rowtype = RowColor.Error;
+        }
+        if (item.Solved == true)
+        {
+            rowtype = RowColor.Success;
+        }
+        using (table.BeginRow(rowtype))
+        {
+            <td>@item.Id</td>
+            <td>@item.Title</td>
+            <td>@item.Creator.UserName</td>
+            <td>@item.AssignedTo.UserName</td>
+            <td>@item.Project.Name</td>
+        }
+    }
+}

@@ -1,1 +1,21 @@
-﻿
+﻿<#@ include file="BaseT4.t4"  #>
+using Catel.IoC;
+using Core.Repos;
+using Core.Repos.Interfaces;
+using Data;
+namespace Core
+{
+	internal static partial class IoC
+	{
+		public static void AutoRegisterRepositories()
+		{
+<#Type typeInfo = typeof(BugzbgoneDb);
+foreach (PropertyInfo propertyInfo in typeInfo.GetProperties().ToList().Where(x => x.PropertyType.ToString().Contains("DbSet")))
+{
+var poconame = propertyInfo.PropertyType.ToString().Replace("System.Data.Entity.DbSet`1[Models.","").Replace("]","");
+#>
+            ServiceLocator.Default.RegisterType<I<#=poconame#>Repository, <#=poconame#>Repository>();
+	<#}#>
+		}
+	}
+}

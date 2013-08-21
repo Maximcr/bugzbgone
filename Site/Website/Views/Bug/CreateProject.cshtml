@@ -1,0 +1,12 @@
+﻿@using TwitterBootstrapMVC
+@model Website.Models.ProjectModel
+
+@{
+    ViewBag.Title = "Create new Project";
+}
+
+@using (Html.Bootstrap().Begin(new Form()))
+{
+    @Html.Bootstrap().TextBoxFor(x => x.Name)
+    @Html.Bootstrap().SubmitButton().Text("Create new Project")
+}

@@ -15,6 +15,14 @@ namespace Core.Repos
          }
 	} 
 
+	    public partial class ProjectRepository : EntityRepositoryBase<Project, int>, IProjectRepository
+	{
+		 public ProjectRepository(BugzbgoneDb dbContext) 
+		 : base(dbContext)
+         {
+         }
+	} 
+
 	    public partial class UserProfileRepository : EntityRepositoryBase<UserProfile, int>, IUserProfileRepository
 	{
 		 public UserProfileRepository(BugzbgoneDb dbContext) 

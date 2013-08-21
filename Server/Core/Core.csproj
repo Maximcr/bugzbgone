@@ -51,6 +51,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bootstrap.cs" />
+    <Compile Include="BugzbgoneUoW.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repos\AutoRepos.cs">
       <AutoGen>True</AutoGen>
@@ -83,14 +85,13 @@
       <LastGenOutput>BaseT41.cs</LastGenOutput>
     </None>
     <None Include="T4\RegisterRepos.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>RegisterRepos.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Contracts\Contracts.csproj">
       <Project>{54684e21-1551-42af-8e4e-545733507486}</Project>

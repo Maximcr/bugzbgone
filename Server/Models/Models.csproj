@@ -53,6 +53,7 @@
     <Compile Include="Bug.cs" />
     <Compile Include="Comment.cs" />
     <Compile Include="Prioirty.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserProfile.cs" />
   </ItemGroup>

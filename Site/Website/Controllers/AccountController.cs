@@ -15,7 +15,7 @@ using Models;
 namespace Website.Controllers
 {
     [Authorize]
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         //
         // GET: /Account/Login
