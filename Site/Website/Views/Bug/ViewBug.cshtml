@@ -1,10 +1,37 @@
 ﻿@using TwitterBootstrapMVC
 @model Website.Models.BugModel
-@Html.Bootstrap().LabelFor(x => x.Title)
-@Html.DisplayFor(x => x.Title)
-@Html.DisplayFor(x => x.Description)
-@Html.DisplayFor(x => x.CreatorName)
-@Html.DisplayFor(x => x.AssignedToName)
-@Html.DisplayFor(x => x.ProjectName)
-@Html.DisplayFor(x => x.Solved)
-@Html.DisplayFor(x => x.Closed)
+@{
+    bool showsubmitbutton = false;
+}
+@using (Html.Bootstrap().Begin(new Form().Type(FormType.Horizontal)))
+{
+    @Html.HiddenFor(x=>x.Id)
+    @Html.Bootstrap().LabelFor(x => x.Title)
+    @Html.DisplayFor(x => x.Title)
+    @Html.DisplayFor(x => x.Description)
+    @Html.DisplayFor(x => x.CreatorName)
+    @Html.DisplayFor(x => x.AssignedToName)
+    @Html.DisplayFor(x => x.ProjectName)
+    if (User.Identity.Name == Model.CreatorName)
+    {
+        @Html.Bootstrap().CheckBoxFor(x => x.Solved)
+        showsubmitbutton = true;
+    }
+    else
+    {
+        @Html.DisplayFor(x => x.Solved)
+    }
+    if (Roles.IsUserInRole("Team Leader"))
+    {
+        @Html.Bootstrap().CheckBoxFor(x => x.Closed)
+        showsubmitbutton = true;
+    }
+    else
+    {
+        @Html.DisplayFor(x => x.Closed)
+    }
+    if (showsubmitbutton)
+    {
+        @Html.Bootstrap().SubmitButton().Text("Update bug status")
+    }
+}

@@ -28,5 +28,7 @@ namespace Website.Models
 
         [Display(Name = "Solved")]
         public bool Solved { get; set; }
+
+        public int Id { get; set; }
     }
 }

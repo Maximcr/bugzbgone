@@ -67,10 +67,19 @@ namespace Website.Controllers
             var bugmodel = new Bug();
             ViewData["Priorities"] = bugmodel.Prioirty.ToSelectList();
             var allusers = new List<SelectListItem>();
-            _uow.GetRepository<IUserProfileRepository>().GetAll().ToList().ForEach(item => allusers.Add( new SelectListItem(){ Selected = false, Text = item.UserName, Value = item.UserName}));
+            _uow.GetRepository<IUserProfileRepository>()
+                .GetAll()
+                .ToList()
+                .ForEach(
+                    item =>
+                        allusers.Add(new SelectListItem {Selected = false, Text = item.UserName, Value = item.UserName}));
             ViewData["allusers"] = allusers;
             var allprojects = new List<SelectListItem>();
-            _uow.GetRepository<IProjectRepository>().GetAll().ToList().ForEach(item => allprojects.Add(new SelectListItem() { Selected = false, Text = item.Name, Value = item.Name }));
+            _uow.GetRepository<IProjectRepository>()
+                .GetAll()
+                .ToList()
+                .ForEach(
+                    item => allprojects.Add(new SelectListItem {Selected = false, Text = item.Name, Value = item.Name}));
             ViewData["allprojects"] = allprojects;
             return View(new BugModel());
         }
@@ -78,7 +87,6 @@ namespace Website.Controllers
         [HttpPost]
         public ActionResult CreateNewBug(BugModel bugModel)
         {
-
             using (var repo = _uow.GetRepository<IBugRepository>())
             {
                 var newbug = new Bug();
@@ -99,7 +107,6 @@ namespace Website.Controllers
             }
             _uow.SaveChanges();
             return RedirectToAction("Index");
-
         }
 
         public ActionResult ViewBug(int id = 1)
@@ -107,7 +114,8 @@ namespace Website.Controllers
             using (var repo = _uow.GetRepository<IBugRepository>())
             {
                 var bugmodel = new BugModel();
-                var bug = repo.FirstOrDefault(x => x.Id == id);
+                Bug bug = repo.FirstOrDefault(x => x.Id == id);
+                bugmodel.Id = bug.Id;
                 bugmodel.Priority = bug.Prioirty;
                 bugmodel.AssignedToName = bug.AssignedTo.UserName;
                 bugmodel.Description = bug.Description;
@@ -118,6 +126,20 @@ namespace Website.Controllers
                 bugmodel.Solved = bug.Solved;
                 return View(bugmodel);
             }
+        }
+
+        [HttpPost]
+        public ActionResult ViewBug(BugModel bugModel)
+        {
+            using (var repo = _uow.GetRepository<IBugRepository>())
+            {
+                Bug bug = repo.FirstOrDefault(x => x.Id == bugModel.Id);
+                bug.Solved = bugModel.Solved;
+                bug.Closed = bugModel.Closed;
+                repo.Update(bug);
+            }
+            _uow.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

@@ -35,21 +35,23 @@ namespace Website
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AuthConfig.RegisterAuth();
+            CheckRolesAndMaxim();
+        }
+
+        private void CheckRolesAndMaxim()
+        {
             var roles = (SimpleRoleProvider) Roles.Provider;
             if (!roles.RoleExists("Team Leader"))
                 roles.CreateRole("Team Leader");
             if (!roles.RoleExists("Team Member"))
                 roles.CreateRole("Team Member");
-            var membership = (SimpleMembershipProvider) Membership.Provider;
-            int intrecordss;
             var _uow = ServiceLocator.Default.ResolveType<IBugzbgoneUoW>();
-
             if (!_uow.GetRepository<IUserProfileRepository>().GetAll().Any(x => x.UserName == "Maxim"))
             {
+                var membership = (SimpleMembershipProvider) Membership.Provider;
                 membership.CreateUserAndAccount("Maxim", "mixam111");
                 roles.AddUsersToRoles(new[] {"Maxim"}, new[] {"Team Leader"});
             }
-
         }
     }
 }
