@@ -19,7 +19,7 @@
 
     foreach (Bug item in Model)
     {
-        var rowtype = RowColor.Info; 
+        var rowtype = RowColor.Info;
         if (item.Closed == true)
         {
             rowtype = RowColor.Error;
@@ -35,6 +35,17 @@
             <td>@item.Creator.UserName</td>
             <td>@item.AssignedTo.UserName</td>
             <td>@item.Project.Name</td>
+            <td>
+                @Html.Bootstrap().ActionLinkButton("Edit/View", "ViewBug").RouteValues(new { id = item.Id }).Style(ButtonStyle.Info).IconPrepend(Icons.info_sign)
+                @*@if (User.IsInRole("Admin"))
+                {
+                    using (Html.BeginForm("Delete", "User", routeValues: new { id = userdetailmodel.Id }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Bootstrap().SubmitButton().Text("Delete").Style(ButtonStyle.Danger).IconPrepend(Icons.warning_sign)
+                    }
+                }*@
+            </td>
         }
     }
 }

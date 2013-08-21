@@ -106,7 +106,17 @@ namespace Website.Controllers
         {
             using (var repo = _uow.GetRepository<IBugRepository>())
             {
-                return View(repo.FirstOrDefault(x => x.Id == id));
+                var bugmodel = new BugModel();
+                var bug = repo.FirstOrDefault(x => x.Id == id);
+                bugmodel.Priority = bug.Prioirty;
+                bugmodel.AssignedToName = bug.AssignedTo.UserName;
+                bugmodel.Description = bug.Description;
+                bugmodel.ProjectName = bug.Project.Name;
+                bugmodel.Title = bug.Title;
+                bugmodel.CreatorName = bug.Creator.UserName;
+                bugmodel.Closed = bug.Closed;
+                bugmodel.Solved = bug.Solved;
+                return View(bugmodel);
             }
         }
     }

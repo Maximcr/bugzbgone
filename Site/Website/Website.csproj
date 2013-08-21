@@ -337,6 +337,7 @@
     <Content Include="Views\Bug\CreateTeamMember.cshtml" />
     <Content Include="Views\Bug\CreateProject.cshtml" />
     <Content Include="Views\Bug\CreateNewBug.cshtml" />
+    <Content Include="Views\Bug\ViewBug.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
